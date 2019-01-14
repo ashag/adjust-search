@@ -1,0 +1,29 @@
+%h3
+  = "GITHUB SEARCH RESULTS"
+
+.div
+  - if @parsed_results
+    - @parsed_results.each do |result|
+      .div
+        %strong= "Name: "
+        = result['name']
+      .div
+        %strong= "Owner: "
+        = result['owner']
+      .div
+        %strong= "Description: "
+        = result['url']
+      .div
+        %strong= "URL: "
+        = result["url"]
+      .div
+        = "------------------"
+  - else
+    .div
+      = "Something went wrong with your request"
+    .div
+      - if @error_messages
+        - @error_messages.map do |m|
+          .div
+            = m['message']
+
